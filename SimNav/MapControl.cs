@@ -80,7 +80,8 @@ namespace SimNav
 
            // string directorioActual = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetModules()[0].FullyQualifiedName);
             string directorioActual = System.Environment.CurrentDirectory;
-            string pathFichero = directorioActual + "\\World\\world_wgs84.shp";
+            //string pathFichero = directorioActual + "\\World\\world_wgs84.shp";
+            string pathFichero = directorioActual + "\\world_wgs84.shp";
             AddLayerInicial(pathFichero);
 
             
