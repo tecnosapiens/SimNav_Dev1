@@ -24,6 +24,8 @@ namespace SimNav
         double rumbo;
         int anguloTimon;
         int profundidad;
+        double profundidadFeet;
+        double profundidadFantom;
 
         int vientoDireccion;
         int vientoVelocidad;
@@ -65,6 +67,8 @@ namespace SimNav
             rumbo = 0;
             anguloTimon = 0;
             profundidad = 0;
+            profundidadFeet = 0.0;
+            profundidadFantom = 0.0;
 
             vientoDireccion = 0;
             vientoVelocidad = 0;
@@ -108,6 +112,8 @@ namespace SimNav
             velocidad = vel;
             rumbo = dirBuque;
             profundidad = prof;
+            profundidadFeet = prof * (double)3.28;
+            profundidadFantom = prof * (double)0.5468;
 
             vientoDireccion = vientoDir;
             vientoVelocidad = vientoVel;
@@ -122,7 +128,13 @@ namespace SimNav
         
         public void setVelocidad(int vel) { velocidad = vel; }
         public void setRumbo(int dirBuque) { rumbo = dirBuque; }
-        public void setProfundidad(int sonda) { profundidad = sonda; }
+        public void setProfundidad(int sonda)
+        {
+            profundidad = sonda;
+            profundidadFeet = sonda * (double)3.28;
+            profundidadFantom = sonda * (double)0.5468;
+
+        }
 
         public void setVientoDireccion(int dirViento) { vientoDireccion = dirViento; }
         public void setVientoVelocidad(int velViento) { vientoVelocidad = velViento; }
@@ -146,6 +158,8 @@ namespace SimNav
         public int getVelocidad() { return velocidad; }
         public double getRumbo() { return rumbo; }
         public int getProfundidad() { return profundidad; }
+        public double getProfundidadFeet() { return profundidadFeet; }
+        public double getProfundidadFantom() { return profundidadFantom; }
 
         public int getVientoDireccion() { return vientoDireccion; }
         public int getVientoVelocidad() { return vientoVelocidad; }
@@ -421,7 +435,7 @@ namespace SimNav
 
 
             //$GPGLL,1807.52,N,09425.15,W,205904,A,A*58
-            data = "GPGLL," + latitud.ToString("0.00") + "," + dirLat + "," + longitud.ToString("0.00") + "," + dirLon + "," + horaUTC + ",A";
+            data = "GPGLL," + latitud.ToString("00.00") + "," + dirLat + "," + longitud.ToString("000.00") + "," + dirLon + "," + horaUTC + ",A";
             checksum = this.generarChecksum(data);
             dataSalida[0] = "$" + data + "*" + checksum + "\r";
 
@@ -431,7 +445,7 @@ namespace SimNav
             dataSalida[1] = "$" + data + "*" + checksum + "\r";
 
             //$GPGGA,205905,1807.5191,N,09425.1493,W,1,06,02.0,15.2,M,-8.3,M,,*48
-            data = "GPGLL," + horaUTC + "," + latitud.ToString("0.00") + "," + dirLat + "," + longitud.ToString("0.00") + "," + dirLon + ",1,06,02.0,15.2,M,-8.3,M,,";
+            data = "GPGLL," + horaUTC + "," + latitud.ToString("00.00") + "," + dirLat + "," + longitud.ToString("000.00") + "," + dirLon + ",1,06,02.0,15.2,M,-8.3,M,,";
             checksum = this.generarChecksum(data);
             dataSalida[2] = "$" + data + "*" + checksum + "\r";
 
@@ -504,7 +518,7 @@ namespace SimNav
 
 
             //$GPGLL,1807.52,N,09425.15,W,205904,A,A*58
-            data = "GPGLL," + latitud.ToString("0.00") + "," + dirLat + "," + longitud.ToString("0.00") + "," + dirLon + "," + horaUTC + ",A";
+            data = "GPGLL," + latitud.ToString("00.00") + "," + dirLat + "," + longitud.ToString("000.00") + "," + dirLon + "," + horaUTC + ",A";
             checksum = this.generarChecksum(data);
             dataSalida[0] = "$" + data + "*" + checksum + "\r";
 
@@ -580,7 +594,7 @@ namespace SimNav
             checksum = this.generarChecksum(data);
             dataSalida[0] = "$" + data + "*" + checksum + "\r";
             //$SDDBT2000,M,,F*60
-            data = "SDDBT2000,M,,F";
+            data = "SDDBT,"+profundidad.ToString("0.0")+",F,1000,M,000.00,F";
             checksum = this.generarChecksum(data);
             dataSalida[1] = "$" + data + "*" + checksum + "\r";
           
