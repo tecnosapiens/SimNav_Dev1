@@ -211,7 +211,7 @@
             // 
             // numericUpDown_profundidad
             // 
-            this.numericUpDown_profundidad.Location = new System.Drawing.Point(184, 143);
+            this.numericUpDown_profundidad.Location = new System.Drawing.Point(176, 143);
             this.numericUpDown_profundidad.Maximum = new decimal(new int[] {
             8000,
             0,
@@ -230,7 +230,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(180, 120);
+            this.label25.Location = new System.Drawing.Point(172, 120);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(75, 13);
             this.label25.TabIndex = 27;
@@ -240,7 +240,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(234, 145);
+            this.label26.Location = new System.Drawing.Point(226, 145);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(36, 18);
             this.label26.TabIndex = 29;
@@ -265,7 +265,7 @@
             // 
             // numericUpDown_velocidad
             // 
-            this.numericUpDown_velocidad.Location = new System.Drawing.Point(96, 143);
+            this.numericUpDown_velocidad.Location = new System.Drawing.Point(93, 143);
             this.numericUpDown_velocidad.Maximum = new decimal(new int[] {
             50,
             0,
@@ -284,7 +284,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(83, 120);
+            this.label16.Location = new System.Drawing.Point(80, 120);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 16);
             this.label16.TabIndex = 17;
@@ -440,7 +440,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(132, 145);
+            this.label21.Location = new System.Drawing.Point(129, 145);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(26, 18);
             this.label21.TabIndex = 26;
@@ -535,7 +535,7 @@
             this.Controls.Add(this.button_aceptarDatosBuquePropio);
             this.Controls.Add(this.groupBox_datosSensores);
             this.Name = "DatosBuquePropio";
-            this.Size = new System.Drawing.Size(309, 400);
+            this.Size = new System.Drawing.Size(309, 418);
             this.groupBox_datosSensores.ResumeLayout(false);
             this.groupBox_viento.ResumeLayout(false);
             this.groupBox_viento.PerformLayout();

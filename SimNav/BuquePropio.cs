@@ -561,19 +561,56 @@ namespace SimNav
             string data = "";
             string checksum = "";
 
+            /*--------------------------------------------------------------
+            VBW Dual Ground/Water Speed
+            1 2 3 4 5 6 7
+            | | | | | | |
+            $--VBW,x.x,x.x,A,x.x,x.x,A*hh
+            1) Longitudinal water speed, "-" means astern
+            2) Transverse water speed, "-" means port
+            3) Status, A = data valid
+            4) Longitudinal ground speed, "-" means astern
+            5) Transverse ground speed, "-" means port
+            6) Status, A = data valid
+            7) Checksum
 
-            //$VDVBW,0.89,-0.13,A,0.00,0.00,A,,V,,V*7F
-            data = "VDVBW," + velocidad.ToString("0.0") + "," + velocidad.ToString("0.0") + ",A" + velocidad.ToString("0.0") + "," + velocidad.ToString("0.0") + ",V";
+            $VDVBW,0.89,-0.13,A,0.00,0.00,A,,V,,V*7F
+            */
+            data = "VDVBW," + velocidad.ToString("0.0") + "," + velocidad.ToString("0.0") + ",A" + velocidad.ToString("0.0") + "," + velocidad.ToString("0.0") + ",A";
             checksum = this.generarChecksum(data);
             dataSalida[0] = "$" + data + "*" + checksum + "\r";
 
-            //$VDVLW,847732.00,N,2413.97,N*58
+            /*-----------------------------------------------------------------
+            VLW Distance Traveled through Water
+            1 2 3 4 5
+            | | | | |
+            $--VLW,x.x,N,x.x,N*hh
+            1) Total cumulative distance
+            2) N = Nautical Miles
+            3) Distance since Reset
+            4) N = Nautical Miles
+            5) Checksum
+
+            $VDVLW,847732.00,N,2413.97,N*58
+            */
             data = "$VDVLW," + "0.0,N,0.0,N";
             checksum = this.generarChecksum(data);
             dataSalida[1] = "$" + data + "*" + checksum + "\r";
 
-            //$VDDPT,5.38,0.5,200.0*69
-            data = "VDDPT,0.00,0.0,0.0";
+            /*---------------------------------------------------------------------
+            DPT Heading – Deviation & Variation
+            1 2 3
+            | | |
+            $--DPT,x.x,x.x*hh
+            1) Depth, meters
+            2) Offset from transducer;
+            positive means distance from transducer to water line,
+            negative means distance from transducer to keel
+            3) Checksum
+
+            $VDDPT,5.38,0.5,200.0*69
+            */
+            data = "VDDPT," + profundidad.ToString("0.0") + ",1.0";
             checksum = this.generarChecksum(data);
             dataSalida[2] = "$" + data + "*" + checksum + "\r";
 
@@ -589,12 +626,39 @@ namespace SimNav
             string checksum = "";
 
 
-            //$SDDPT,,-0.0,????*78
-            data = "SDDPT," + profundidad.ToString("0.0") + ",-0.0,";
+            /*---------------------------------------------------------------------
+            DPT Heading – Deviation & Variation
+            1 2 3
+            | | |
+            $--DPT,x.x,x.x*hh
+            1) Depth, meters
+            2) Offset from transducer;
+            positive means distance from transducer to water line,
+            negative means distance from transducer to keel
+            3) Checksum
+
+            $VDDPT,5.38,0.5,200.0*69
+            */
+            data = "SDDPT," + profundidad.ToString("0.0") + ",0.0,";
             checksum = this.generarChecksum(data);
             dataSalida[0] = "$" + data + "*" + checksum + "\r";
-            //$SDDBT2000,M,,F*60
-            data = "SDDBT,"+profundidad.ToString("0.0")+",F,1000,M,000.00,F";
+
+            /*---------------------------------------------------------------------
+            DBT Depth Below Transducer
+            1 2 3 4 5 6 7
+            | | | | | | |
+            $--DBT,x.x,f,x.x,M,x.x,F*hh
+            1) Depth, feet
+            2) f = feet
+            3) Depth, meters
+            4) M = meters
+            5) Depth, Fathoms
+            6) F = Fathoms
+            7) Checksum
+
+            $SDDBT2000,M,,F*60
+            */
+            data = "SDDBT,"+profundidadFeet.ToString("0.0")+",f,"+ profundidad.ToString("0.0")+ ",M," + profundidadFantom.ToString("0.0")+",F";
             checksum = this.generarChecksum(data);
             dataSalida[1] = "$" + data + "*" + checksum + "\r";
           

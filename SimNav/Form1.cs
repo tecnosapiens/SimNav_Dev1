@@ -22,6 +22,42 @@ namespace SimNav
         
          public PuertoSerial ObjetoPuertoSerial;
 
+         public PuertoSerial puertoSerial_GPS;
+         public PuertoSerial puertoSerial_DGPS;
+         public PuertoSerial puertoSerial_GYRO;
+         public PuertoSerial puertoSerial_ECOSONDA;
+         public PuertoSerial puertoSerial_ANEMOMETRO;
+         public PuertoSerial puertoSerial_CORREDERA;
+         public PuertoSerial puertoSerial_AIS;
+         public PuertoSerial puertoSerial_GPSBluetooth;
+
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_GPS;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_DGPS;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_GYRO;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_ECOSONDA;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_ANEMOMETRO;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_CORREDERA;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_AIS;
+         public EtiquetaEstadoPuertoSerial etiqueta_puertoSerial_GPSBluetooth;
+
+        
+         bool puertoSerialGeneral_ISActivo;
+         bool puertoSerialGPS_ISActivo;
+         bool puertoSerialDGPS_ISActivo;
+         bool puertoSerialGYRO_ISActivo;
+         bool puertoSerialECOSONDA_ISActivo;
+         bool puertoSerialANEMOMETRO_ISActivo;
+         bool puertoSerialCORREDERA_ISActivo;
+         bool puertoSerialAIS_ISActivo;
+         bool puertoSerialGPSBluetooth_ISActivo;
+        
+
+
+
+
+
+
+
          public DatosBuquePropio buquePropio;
 
          public MapControl canvasMapa;
@@ -43,6 +79,35 @@ namespace SimNav
         {
 
             ObjetoPuertoSerial = new PuertoSerial();
+            puertoSerial_GPS = new PuertoSerial();
+            puertoSerial_DGPS = new PuertoSerial();
+            puertoSerial_GYRO = new PuertoSerial();
+            puertoSerial_ECOSONDA = new PuertoSerial();
+            puertoSerial_ANEMOMETRO = new PuertoSerial(); 
+            puertoSerial_CORREDERA = new PuertoSerial();
+            puertoSerial_AIS = new PuertoSerial();
+            puertoSerial_GPSBluetooth = new PuertoSerial();
+
+
+
+            colocarEtiquetaEstadoPuertoSerial();
+
+
+            puertoSerialGeneral_ISActivo = false;
+            puertoSerialGPS_ISActivo = false;
+            puertoSerialDGPS_ISActivo = false;
+            puertoSerialGYRO_ISActivo = false;
+            puertoSerialECOSONDA_ISActivo = false;
+            puertoSerialANEMOMETRO_ISActivo = false;
+            puertoSerialCORREDERA_ISActivo = false;
+            puertoSerialAIS_ISActivo = false;
+            puertoSerialGPSBluetooth_ISActivo = false;
+
+
+
+
+
+
             buquePropio = new DatosBuquePropio(this);
             conLoop = true;
 
@@ -63,7 +128,7 @@ namespace SimNav
         {
            
             
-            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this);
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.ObjetoPuertoSerial);
 
             configuracionPuertoSerial.BringToFront();
             configuracionPuertoSerial.Show();
@@ -78,13 +143,15 @@ namespace SimNav
             button_transmitir.Enabled = false;
             groupBox_reproduccion.Enabled = false;
 
-            if(ObjetoPuertoSerial.get_estadoPuertoSerial())
+
+
+            if (existePuertosSerialConfigurado())
             {
-                label_bitDatos.Text = ObjetoPuertoSerial.getBitDatos();
-                label_bitParada.Text = ObjetoPuertoSerial.getBitParada();
-                label_paridad.Text = ObjetoPuertoSerial.getParidad();
-                label_puertoCom.Text = ObjetoPuertoSerial.getNombrePuerto();
-                label_velocidadTransmicion.Text = ObjetoPuertoSerial.getVelocidadPuerto();
+                //label_bitDatos.Text = ObjetoPuertoSerial.getBitDatos();
+                //label_bitParada.Text = ObjetoPuertoSerial.getBitParada();
+                //label_paridad.Text = ObjetoPuertoSerial.getParidad();
+                //label_puertoCom.Text = ObjetoPuertoSerial.getNombrePuerto();
+                //label_velocidadTransmicion.Text = ObjetoPuertoSerial.getVelocidadPuerto();
                 listBox_visorDatosNmea.Items.Add("Inicia Transmision de Datos");
                 // se enviaran los datos por puerta serial con loop
                 
@@ -101,18 +168,41 @@ namespace SimNav
             }
             else
             {
-                MessageBox.Show("Debe Configurar el Puerto Serial", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Debe Configurar algún Puerto Serial", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            
+            //if(ObjetoPuertoSerial.get_estadoPuertoSerial())
+            //{
+            //    label_bitDatos.Text = ObjetoPuertoSerial.getBitDatos();
+            //    label_bitParada.Text = ObjetoPuertoSerial.getBitParada();
+            //    label_paridad.Text = ObjetoPuertoSerial.getParidad();
+            //    label_puertoCom.Text = ObjetoPuertoSerial.getNombrePuerto();
+            //    label_velocidadTransmicion.Text = ObjetoPuertoSerial.getVelocidadPuerto();
+            //    listBox_visorDatosNmea.Items.Add("Inicia Transmision de Datos");
+            //    // se enviaran los datos por puerta serial con loop
+                
+            //        // inicia el hilo principal del programa
+            //        myThread = new Thread(new ThreadStart(hiloPrincipal));
+            //        myThread.IsBackground = true;
+            //        hiloIniciado = true;
+                  
+            //        myThread.Start();
 
+               
 
-            
+            //    button_configurarPuerto.Enabled = false;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Debe Configurar el Puerto Serial", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //}
+    
         }
 
         private void hiloPrincipal()
         {
-            ObjetoPuertoSerial.AbrirPuertoSerial();
+            abrirPuertosSerialesDisponibles();
+            //ObjetoPuertoSerial.AbrirPuertoSerial();
             string[] data = { "" };
             //ImprimirSalida("inicio de transmision");
             while (myThread.IsAlive)
@@ -140,109 +230,208 @@ namespace SimNav
                 }
                 else
                 {
-                    if (checkBox_gpsPropio.Checked)
+                    if (checkBox_gpsPropio.Checked) // codigo envio de datos del sensor GPS Bluetooth
                     {
                         data = buquePropio.getDatos_GPSPropio();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("GPS Bluetooth:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("GPS Bluetooth:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            }
+                            
+                                if (puertoSerialGPSBluetooth_ISActivo)
+                                {
+                                   puertoSerial_GPSBluetooth.enviarData(datas);
+                                   SetText("GPS Bluetooth (puerta alterna):\t" + datas);
+                                   Thread.Sleep(puertoSerial_GPSBluetooth.getTiempoTransmisionINT());
 
-
+                                }
+                            
+                            
                         }
                     }
-                    if (checkBox_estadoGPS.Checked)
+
+                    if (checkBox_estadoGPS.Checked) // codigo envio de datos del sensor GPS
                     {
                         data = buquePropio.getDatos_GPS();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("GPS:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("GPS:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            }
+                            if (puertoSerialGPS_ISActivo)
+                            {
+                                    puertoSerial_GPS.enviarData(datas);
+                                    SetText("GPS (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_GPS.getTiempoTransmisionINT());
 
-
+                             }
+                            
+                            
                         }
                     }
-                    if (checkBox_estadoDGPS.Checked)
+
+
+                    if (checkBox_estadoDGPS.Checked) // codigo envio de datos del sensor GPS
                     {
                         data = buquePropio.getDatos_DGPS();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("DGPS:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("DGPS:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            }
+                            
+                                if (puertoSerialGPS_ISActivo)
+                                {
+                                    puertoSerial_DGPS.enviarData(datas);
+                                    SetText("DGPS (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_DGPS.getTiempoTransmisionINT());
 
+                                }
+                            
 
                         }
 
                     }
-                    if (checkBox_estadoGyro.Checked)
+                    if (checkBox_estadoGyro.Checked)// codigo envio de datos del sensor GYRO
                     {
                         data = buquePropio.getDatos_GYRO();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("GYRO:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("GYRO:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            }
+                            
+                                if (puertoSerialGYRO_ISActivo)
+                                {
+                                    puertoSerial_GYRO.enviarData(datas);
+                                    SetText("GYRO (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_GYRO.getTiempoTransmisionINT());
 
+                                }
+                            
 
                         }
 
                     }
-                    if (checkBox_estadoEcosonda.Checked)
+                    if (checkBox_estadoEcosonda.Checked)// codigo envio de datos del sensor ECOSONDA
                     {
                         data = buquePropio.getDatos_ECOSONDA();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("ECOSONDA:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("ECOSONDA:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
 
+                            }
+                            
+                                if (puertoSerialECOSONDA_ISActivo)
+                                {
+                                   puertoSerial_ECOSONDA.enviarData(datas);
+                                   SetText("ECOSONDA (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_ECOSONDA.getTiempoTransmisionINT());
+
+                                }
+                            
+                            
 
                         }
                     }
-                    if (checkBox_estadoCorredera.Checked)
+                    if (checkBox_estadoCorredera.Checked)// codigo envio de datos del sensor CORREDERA
                     {
                         data = buquePropio.getDatos_CORREDERA();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("CORREDERA:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("CORREDERA:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
 
+
+                            }
+                           
+                                if (puertoSerialCORREDERA_ISActivo)
+                                {
+                                    puertoSerial_CORREDERA.enviarData(datas);
+                                    SetText("CORREDERA (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_CORREDERA.getTiempoTransmisionINT());
+
+                                }
+                           
+                            
 
                         }
                     }
-                    if (checkBox_estadoAnemometro.Checked)
+                    if (checkBox_estadoAnemometro.Checked)// codigo envio de datos del sensor ANEMOMETRO
                     {
                         data = buquePropio.getDatos_ANEMOMETRO();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("ANEMOMETRO:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("ANEMOMETRO:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
 
+                            }
+                           
+                                if (puertoSerialANEMOMETRO_ISActivo)
+                                {
+                                    puertoSerial_ANEMOMETRO.enviarData(datas);
+                                    SetText("ANEMOMETRO (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_ANEMOMETRO.getTiempoTransmisionINT());
 
+                                }
+    
                         }
                     }
-                    if (checkBox_estadoAIS.Checked)
+                    if (checkBox_estadoAIS.Checked)// codigo envio de datos del sensor AIS
                     {
                         data = buquePropio.getDatos_AIS();
 
                         foreach (string datas in data)
                         {
-                            ObjetoPuertoSerial.enviarData(datas);
-                            SetText("AIS:\t" + datas);
-                            Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
 
+                            if (puertoSerialGeneral_ISActivo)
+                            {
+                                ObjetoPuertoSerial.enviarData(datas);
+                                SetText("AIS:\t" + datas);
+                                Thread.Sleep(ObjetoPuertoSerial.getTiempoTransmisionINT());
+
+
+                            }
+                            
+                                if (puertoSerialAIS_ISActivo)
+                                {
+                                    puertoSerial_AIS.enviarData(datas);
+                                    SetText("AIS (puerta alterna):\t" + datas);
+                                    Thread.Sleep(puertoSerial_AIS.getTiempoTransmisionINT());
+
+                                }
+                            
+                           
 
                         }
                     }
@@ -251,7 +440,7 @@ namespace SimNav
                 }
                 
             }
-            ObjetoPuertoSerial.CerrarPuertoSerial();
+            //ObjetoPuertoSerial.CerrarPuertoSerial();
         }
 
         private void button_configurarDatosBuque_Click(object sender, EventArgs e)
@@ -293,12 +482,15 @@ namespace SimNav
 
         private void button_detener_Click(object sender, EventArgs e)
         {
+            desactivarPuertosSerialesDisponibles();
             if (hiloIniciado)
             {
                 this.myThread.Abort();
             }
-            
-              ObjetoPuertoSerial.CerrarPuertoSerial();
+            cerrarPuertosSerialesDisponibles();
+
+           
+              //ObjetoPuertoSerial.CerrarPuertoSerial();
 
             reproduccion = false;
             checkBox_navegacionBuque.Checked = false;
@@ -306,6 +498,8 @@ namespace SimNav
             button_configurarPuerto.Enabled = true;
             button_transmitir.Enabled = true;
             groupBox_reproduccion.Enabled = true;
+            comprobarEstadoBotonConfigPuerto();
+            //desbloquearBotonesPuertosSerialesSensores();
 
            // this.checkBox_navegacionBuque.Click += new System.EventHandler(this.checkBox_navegacionBuque_CheckedChanged);
         }
@@ -426,12 +620,16 @@ private void checkBox_estadoGPS_CheckedChanged(object sender, EventArgs e)
 			 {
 				 checkBox_estadoGPS.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoGPS.Text = "Activado";
+                 button_configPuertoSerial_GPS.Enabled = false;
+                 etiqueta_puertoSerial_GPS.set_etiquetaEstadoPuerto(puertoSerial_GPS);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoGPS.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoGPS.Text = "Desactivado";
+                 button_configPuertoSerial_GPS.Enabled = true;
+                 etiqueta_puertoSerial_GPS.set_estadoTransmision("Sin Transmisión");
 				 
 			 }
 }
@@ -442,13 +640,16 @@ private void checkBox_estadoDGPS_CheckedChanged(object sender, EventArgs e)
 			 {
 				 checkBox_estadoDGPS.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoDGPS.Text = "Activado";
+                 button_configPuertoSerial_DGPS.Enabled = false;
+                 etiqueta_puertoSerial_DGPS.set_etiquetaEstadoPuerto(puertoSerial_DGPS);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoDGPS.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoDGPS.Text = "Desactivado";
-				 
+                 button_configPuertoSerial_DGPS.Enabled = true;
+                 etiqueta_puertoSerial_DGPS.set_estadoTransmision("Sin Transmisión");				 
 			 }
 }
 
@@ -458,12 +659,16 @@ private void checkBox_estadoGyro_CheckedChanged(object sender, EventArgs e)
 			 {
 				 checkBox_estadoGyro.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoGyro.Text = "Activado";
+                 button_configPuertoSerial_GYRO.Enabled = false;
+                 etiqueta_puertoSerial_GYRO.set_etiquetaEstadoPuerto(puertoSerial_GYRO);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoGyro.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoGyro.Text = "Desactivado";
+                 button_configPuertoSerial_GYRO.Enabled = true;
+                 etiqueta_puertoSerial_GYRO.set_estadoTransmision("Sin Transmisión");
 				 
 			 }
 }
@@ -474,13 +679,16 @@ private void checkBox_estadoEcosonda_CheckedChanged(object sender, EventArgs e)
 			 {
 				 checkBox_estadoEcosonda.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoEcosonda.Text = "Activado";
+                 button_configPuertoSerial_ECOSONDA.Enabled = false;
+                 etiqueta_puertoSerial_ECOSONDA.set_etiquetaEstadoPuerto(puertoSerial_ECOSONDA);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoEcosonda.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoEcosonda.Text = "Desactivado";
-				 
+                 button_configPuertoSerial_ECOSONDA.Enabled = true;
+                 etiqueta_puertoSerial_ECOSONDA.set_estadoTransmision("Sin Transmisión");
 			 }
 }
 
@@ -490,12 +698,16 @@ private void checkBox_estadoAnemometro_CheckedChanged(object sender, EventArgs e
 			 {
 				 checkBox_estadoAnemometro.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoAnemometro.Text = "Activado";
+                 button_configPuertoSerial_ANEMOMETRO.Enabled = false;
+                 etiqueta_puertoSerial_ANEMOMETRO.set_etiquetaEstadoPuerto(puertoSerial_ANEMOMETRO);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoAnemometro.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoAnemometro.Text = "Desactivado";
+                 button_configPuertoSerial_ANEMOMETRO.Enabled = true;
+                 etiqueta_puertoSerial_ANEMOMETRO.set_estadoTransmision("Sin Transmisión");
 				 
 			 }
 }
@@ -506,12 +718,16 @@ private void checkBox_estadoCorredera_CheckedChanged(object sender, EventArgs e)
 			 {
 				 checkBox_estadoCorredera.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoCorredera.Text = "Activado";
+                 button_configPuertoSerial_CORREDERA.Enabled = false;
+                 etiqueta_puertoSerial_CORREDERA.set_etiquetaEstadoPuerto(puertoSerial_CORREDERA);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoCorredera.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoCorredera.Text = "Desactivado";
+                 button_configPuertoSerial_CORREDERA.Enabled = true;
+                 etiqueta_puertoSerial_CORREDERA.set_estadoTransmision("Sin Transmisión");
 				 
 			 }
 }
@@ -522,12 +738,16 @@ private void checkBox_estadoAIS_CheckedChanged(object sender, EventArgs e)
 			 {
 				 checkBox_estadoAIS.BackColor = System.Drawing.Color.Green;
 				 checkBox_estadoAIS.Text = "Activado";
+                 button_configPuertoSerial_AIS.Enabled = false;
+                 etiqueta_puertoSerial_AIS.set_etiquetaEstadoPuerto(puertoSerial_AIS);
 				 
 			 }
 			 else
 			 {
 				 checkBox_estadoAIS.BackColor = System.Drawing.Color.Red;
 				 checkBox_estadoAIS.Text = "Desactivado";
+                 button_configPuertoSerial_AIS.Enabled = true;
+                 etiqueta_puertoSerial_AIS.set_estadoTransmision("Sin Transmisión");
 				 
 			 }
 }
@@ -675,12 +895,14 @@ void EnviarDataReproduccionSinLoop()
             {
                 checkBox_gpsPropio.BackColor = System.Drawing.Color.Green;
                 checkBox_gpsPropio.Text = "Activado";
+                etiqueta_puertoSerial_GPSBluetooth.set_etiquetaEstadoPuerto(puertoSerial_GPSBluetooth);
 
             }
             else
             {
                 checkBox_gpsPropio.BackColor = System.Drawing.Color.Red;
                 checkBox_gpsPropio.Text = "Desactivado";
+                etiqueta_puertoSerial_GPSBluetooth.set_estadoTransmision("Sin Transmision");
 
             }
 
@@ -712,6 +934,502 @@ void EnviarDataReproduccionSinLoop()
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             canvasMapa.redimensionarCanvas((this.Width-tabControl_controles.Width) - 50, canvasMapa.Height);
+        }
+
+        private void button_configPuertoSerial_GPS_Click(object sender, EventArgs e)
+        {
+            
+            
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_GPS);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+
+        }
+
+        private void button_configPuertoSerial_DGPS_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_DGPS);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void button_configPuertoSerial_GYRO_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_GYRO);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void button_configPuertoSerial_ECOSONDA_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_ECOSONDA);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void button_configPuertoSerial_ANEMOMETRO_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_ANEMOMETRO);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void button_configPuertoSerial_CORREDERA_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_CORREDERA);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void button_configPuertoSerial_AIS_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_AIS);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void button_configPuertoSerial_GPSBluetooth_Click(object sender, EventArgs e)
+        {
+            ConfiguraPuertoSerialDialog configuracionPuertoSerial = new ConfiguraPuertoSerialDialog(this, this.puertoSerial_GPSBluetooth);
+
+            configuracionPuertoSerial.BringToFront();
+            configuracionPuertoSerial.Show();
+            button_detener.Enabled = true;
+        }
+
+        private void abrirPuertosSerialesDisponibles()
+        {
+            //Puerto serial General
+            if (ObjetoPuertoSerial.get_estadoPuertoSerial())//se comprueba si el puerto serial se encuentra configurado: true= configurado, false=no configurado
+            {
+                if (!ObjetoPuertoSerial.get_estadoPuertoSerialAbierto())//se pregunta si el puerto serial se encuentra actualmente abierto: true= abierto, false= cerrado
+                {
+                    ObjetoPuertoSerial.AbrirPuertoSerial();
+                    puertoSerialGeneral_ISActivo = true;
+                }
+            }
+
+            //puerto serial de GPS
+            if (puertoSerial_GPS.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_GPS.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_GPS.AbrirPuertoSerial();
+                    puertoSerialGPS_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del DGPS
+            if (puertoSerial_DGPS.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_DGPS.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_DGPS.AbrirPuertoSerial();
+                    puertoSerialDGPS_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del Gyro
+            if (puertoSerial_GYRO.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_GYRO.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_GYRO.AbrirPuertoSerial();
+                    puertoSerialGYRO_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del ECOSONDA
+            if (puertoSerial_ECOSONDA.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_ECOSONDA.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_ECOSONDA.AbrirPuertoSerial();
+                    puertoSerialECOSONDA_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del ANEMOMETRO
+            if (puertoSerial_ANEMOMETRO.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_ANEMOMETRO.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_ANEMOMETRO.AbrirPuertoSerial();
+                    puertoSerialANEMOMETRO_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del CORREDERA
+            if (puertoSerial_CORREDERA.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_CORREDERA.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_CORREDERA.AbrirPuertoSerial();
+                    puertoSerialCORREDERA_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del AIS
+            if (puertoSerial_AIS.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_AIS.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_AIS.AbrirPuertoSerial();
+                    puertoSerialAIS_ISActivo = true;
+                }
+            }
+
+            //puertoSerial del GPSBluetooth
+            if (puertoSerial_GPSBluetooth.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_GPSBluetooth.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_GPSBluetooth.AbrirPuertoSerial();
+                    puertoSerialGPSBluetooth_ISActivo = true;
+                }
+            }
+            
+        }
+        private void desactivarPuertosSerialesDisponibles()
+        {
+            //Puerto serial General
+            puertoSerialGeneral_ISActivo = false;
+            puertoSerialGPS_ISActivo = false;
+            puertoSerialDGPS_ISActivo = false;
+            puertoSerialGYRO_ISActivo = false;
+            puertoSerialECOSONDA_ISActivo = false;
+            puertoSerialANEMOMETRO_ISActivo = false;
+            puertoSerialCORREDERA_ISActivo = false;
+            puertoSerialAIS_ISActivo = false;
+            puertoSerialGPSBluetooth_ISActivo = false;
+            
+        }
+        private void cerrarPuertosSerialesDisponibles()
+        {
+            //Puerto serial General
+            if (ObjetoPuertoSerial.get_estadoPuertoSerial())//se comprueba si el puerto serial se encuentra configurado: true= configurado, false=no configurado
+            {
+                if (ObjetoPuertoSerial.get_estadoPuertoSerialAbierto())//se pregunta si el puerto serial se encuentra actualmente abierto: true= abierto, false= cerrado
+                {
+                    ObjetoPuertoSerial.CerrarPuertoSerial();
+                    puertoSerialGeneral_ISActivo = false;
+                }
+            }
+
+            //puerto serial de GPS
+            if (puertoSerial_GPS.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_GPS.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_GPS.CerrarPuertoSerial();
+                    puertoSerialGPS_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del DGPS
+            if (puertoSerial_DGPS.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_DGPS.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_DGPS.CerrarPuertoSerial();
+                    puertoSerialDGPS_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del Gyro
+            if (puertoSerial_GYRO.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_GYRO.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_GYRO.CerrarPuertoSerial();
+                    puertoSerialGYRO_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del ECOSONDA
+            if (puertoSerial_ECOSONDA.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_ECOSONDA.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_ECOSONDA.CerrarPuertoSerial();
+                    puertoSerialECOSONDA_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del ANEMOMETRO
+            if (puertoSerial_ANEMOMETRO.get_estadoPuertoSerial())
+            {
+                if (!puertoSerial_ANEMOMETRO.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_ANEMOMETRO.CerrarPuertoSerial();
+                    puertoSerialANEMOMETRO_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del CORREDERA
+            if (puertoSerial_CORREDERA.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_CORREDERA.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_CORREDERA.CerrarPuertoSerial();
+                    puertoSerialCORREDERA_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del AIS
+            if (puertoSerial_AIS.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_AIS.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_AIS.CerrarPuertoSerial();
+                    puertoSerialAIS_ISActivo = false;
+                }
+            }
+
+            //puertoSerial del GPSBluetooth
+            if (puertoSerial_GPSBluetooth.get_estadoPuertoSerial())
+            {
+                if (puertoSerial_GPSBluetooth.get_estadoPuertoSerialAbierto())
+                {
+                    puertoSerial_GPSBluetooth.CerrarPuertoSerial();
+                    puertoSerialGPSBluetooth_ISActivo = false;
+                }
+            }
+
+        }
+        private void bloquearBotonesPuertosSerialesSensores()
+        {
+            button_configPuertoSerial_AIS.Enabled = false;
+            button_configPuertoSerial_ANEMOMETRO.Enabled = false;
+            button_configPuertoSerial_CORREDERA.Enabled = false;
+            button_configPuertoSerial_DGPS.Enabled = false;
+            button_configPuertoSerial_ECOSONDA.Enabled = false;
+            button_configPuertoSerial_GPSBluetooth.Enabled = false;
+            button_configPuertoSerial_GYRO.Enabled = false;
+            button_configPuertoSerial_GPS.Enabled = false;
+        }
+        private void desbloquearBotonesPuertosSerialesSensores()
+        {
+            button_configPuertoSerial_AIS.Enabled = true;
+            button_configPuertoSerial_ANEMOMETRO.Enabled = true;
+            button_configPuertoSerial_CORREDERA.Enabled = true;
+            button_configPuertoSerial_DGPS.Enabled = true;
+            button_configPuertoSerial_ECOSONDA.Enabled = true;
+            button_configPuertoSerial_GPSBluetooth.Enabled = true;
+            button_configPuertoSerial_GYRO.Enabled = true;
+            button_configPuertoSerial_GPS.Enabled = true;
+        }
+        private bool existePuertosSerialConfigurado()
+        {
+            //Puerto serial General
+            if (ObjetoPuertoSerial.get_estadoPuertoSerial())//se comprueba si el puerto serial se encuentra configurado: true= configurado, false=no configurado
+            {
+                return true;
+            }
+
+            //puerto serial de GPS
+            if (puertoSerial_GPS.get_estadoPuertoSerial())
+            {
+              
+                return true;
+            }
+
+            //puertoSerial del DGPS
+            if (puertoSerial_DGPS.get_estadoPuertoSerial())
+            {
+               
+                return true;
+            }
+
+            //puertoSerial del Gyro
+            if (puertoSerial_GYRO.get_estadoPuertoSerial())
+            {
+                
+                return true;
+            }
+
+            //puertoSerial del ECOSONDA
+            if (puertoSerial_ECOSONDA.get_estadoPuertoSerial())
+            {
+                
+                return true;
+            }
+
+            //puertoSerial del ANEMOMETRO
+            if (puertoSerial_ANEMOMETRO.get_estadoPuertoSerial())
+            {
+               
+                return true;
+            }
+
+            //puertoSerial del CORREDERA
+            if (puertoSerial_CORREDERA.get_estadoPuertoSerial())
+            {
+                
+                return true;
+            }
+
+            //puertoSerial del AIS
+            if (puertoSerial_AIS.get_estadoPuertoSerial())
+            {
+                
+                return true;
+            }
+
+            //puertoSerial del GPSBluetooth
+            if (puertoSerial_GPSBluetooth.get_estadoPuertoSerial())
+            {
+                
+                return true;
+            }
+
+            return false;
+            
+        }
+        public bool estaOcupadoPuertosSerial(string puerto)
+        {
+            //Puerto serial General
+            if (ObjetoPuertoSerial.getNombrePuerto() == puerto && checkBox_navegacionBuque.Checked)//se comprueba si el puerto serial se encuentra configurado: true= configurado, false=no configurado
+            {
+                return true;
+            }
+
+            //puerto serial de GPS
+            if (puertoSerial_GPS.getNombrePuerto() == puerto && checkBox_estadoGPS.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del DGPS
+            if (puertoSerial_DGPS.getNombrePuerto() == puerto && checkBox_estadoDGPS.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del Gyro
+            if (puertoSerial_GYRO.getNombrePuerto() == puerto && checkBox_estadoGyro.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del ECOSONDA
+            if (puertoSerial_ECOSONDA.getNombrePuerto() == puerto && checkBox_estadoEcosonda.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del ANEMOMETRO
+            if (puertoSerial_ANEMOMETRO.getNombrePuerto() == puerto && checkBox_estadoAnemometro.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del CORREDERA
+            if (puertoSerial_CORREDERA.getNombrePuerto() == puerto && checkBox_estadoCorredera.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del AIS
+            if (puertoSerial_AIS.getNombrePuerto() == puerto && checkBox_estadoAIS.Checked)
+            {
+                return true;
+            }
+
+            //puertoSerial del GPSBluetooth
+            if (puertoSerial_GPSBluetooth.getNombrePuerto() == puerto && checkBox_gpsPropio.Checked)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void comprobarEstadoBotonConfigPuerto()
+        {
+             if (checkBox_gpsPropio.Checked) // codigo envio de datos del sensor GPS Bluetooth
+             {
+                 button_configPuertoSerial_GPSBluetooth.Enabled = false;
+             }
+             if (checkBox_estadoGPS.Checked) // codigo envio de datos del sensor GPS
+             {
+                 button_configPuertoSerial_GPS.Enabled = false;
+             }
+             if (checkBox_estadoDGPS.Checked) // codigo envio de datos del sensor GPS
+             {
+                 button_configPuertoSerial_DGPS.Enabled = false;
+             }
+             if (checkBox_estadoGyro.Checked)// codigo envio de datos del sensor GYRO
+             {
+                 button_configPuertoSerial_GYRO.Enabled = false;
+             }
+             if (checkBox_estadoEcosonda.Checked)// codigo envio de datos del sensor ECOSONDA
+             {
+                 button_configPuertoSerial_ECOSONDA.Enabled = false;
+             }
+             if (checkBox_estadoCorredera.Checked)// codigo envio de datos del sensor CORREDERA
+             {
+                 button_configPuertoSerial_CORREDERA.Enabled = false;
+             }
+             if (checkBox_estadoAnemometro.Checked)// codigo envio de datos del sensor ANEMOMETRO
+             {
+                 button_configPuertoSerial_ANEMOMETRO.Enabled = false;
+             }
+             if (checkBox_estadoAIS.Checked)// codigo envio de datos del sensor AIS
+             {
+                 button_configPuertoSerial_AIS.Enabled = false;
+             }
+                       
+        }
+
+        public void colocarEtiquetaEstadoPuertoSerial()
+        {
+             etiqueta_puertoSerial_GPS = new EtiquetaEstadoPuertoSerial("GPS");
+            this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_GPS);
+            etiqueta_puertoSerial_GPS.Location = new Point(10, 10);
+
+             etiqueta_puertoSerial_DGPS = new EtiquetaEstadoPuertoSerial("DGPS");
+             this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_DGPS);
+             etiqueta_puertoSerial_DGPS.Location = new Point(10, 115);
+
+             etiqueta_puertoSerial_GYRO = new EtiquetaEstadoPuertoSerial("GYRO");
+             this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_GYRO);
+             etiqueta_puertoSerial_GYRO.Location = new Point(10, 220);
+
+
+             etiqueta_puertoSerial_ECOSONDA = new EtiquetaEstadoPuertoSerial("ECOSONDA");
+             this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_ECOSONDA);
+             etiqueta_puertoSerial_ECOSONDA.Location = new Point(10, 325);
+
+             etiqueta_puertoSerial_ANEMOMETRO = new EtiquetaEstadoPuertoSerial("ANEMOMETRO");
+             this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_ANEMOMETRO);
+             etiqueta_puertoSerial_ANEMOMETRO.Location = new Point(10, 430);
+
+             etiqueta_puertoSerial_CORREDERA = new EtiquetaEstadoPuertoSerial("CORREDERA");
+             this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_CORREDERA);
+             etiqueta_puertoSerial_CORREDERA.Location = new Point(10, 535);
+
+             etiqueta_puertoSerial_AIS = new EtiquetaEstadoPuertoSerial("AIS");
+             this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_AIS);
+             etiqueta_puertoSerial_AIS.Location = new Point(10, 640);
+
+             //etiqueta_puertoSerial_GPSBluetooth = new EtiquetaEstadoPuertoSerial("GPS Bluetooth");
+             //this.tabPage_estadoConexion.Controls.Add(etiqueta_puertoSerial_GPSBluetooth);
+             //etiqueta_puertoSerial_GPSBluetooth.Location = new Point(10, 745);
         }
 
     }// fin de clase 

@@ -16,3 +16,4 @@ C:\Documents and Settings\admin\Escritorio\Repositorio Proyectos Propios\Develop
 C:\Documents and Settings\admin\Escritorio\Repositorio Proyectos Propios\Developer1_SimNav\SimNav\obj\Release\SimNav.csproj.GenerateResource.Cache
 C:\Documents and Settings\admin\Escritorio\Repositorio Proyectos Propios\Developer1_SimNav\SimNav\obj\Release\SimNav.exe
 C:\Documents and Settings\admin\Escritorio\Repositorio Proyectos Propios\Developer1_SimNav\SimNav\obj\Release\SimNav.pdb
+C:\Documents and Settings\admin\Escritorio\Repositorio Proyectos Propios\Developer1_SimNav\SimNav\obj\Release\SimNav.EtiquetaEstadoPuertoSerial.resources

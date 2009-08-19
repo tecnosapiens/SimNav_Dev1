@@ -520,6 +520,7 @@ namespace SimNav
             axMap1.Size = new Size(whith -20, height - statusStrip1.Height);
             // Se inicializa la visualizacion del contorl Legend1 del arbol de mapas abierto.
             this.legend1.Size = new Size(legend1.Width, height - (statusStrip1.Height+35));
+            axMap1.ZoomToMaxExtents();
             refreshMapa();
 
         }

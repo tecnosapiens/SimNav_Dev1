@@ -209,6 +209,8 @@
             // 
             this.comboBox_tiempo.FormattingEnabled = true;
             this.comboBox_tiempo.Items.AddRange(new object[] {
+            "100",
+            "500",
             "1000",
             "2000",
             "3000",
@@ -218,7 +220,7 @@
             this.comboBox_tiempo.Name = "comboBox_tiempo";
             this.comboBox_tiempo.Size = new System.Drawing.Size(56, 21);
             this.comboBox_tiempo.TabIndex = 12;
-            this.comboBox_tiempo.Text = "3000";
+            this.comboBox_tiempo.Text = "100";
             // 
             // label7
             // 

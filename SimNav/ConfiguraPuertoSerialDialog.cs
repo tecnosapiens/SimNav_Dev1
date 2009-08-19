@@ -14,6 +14,8 @@ namespace SimNav
     {
 
         Form1 mainForm;
+        PuertoSerial puertoSerialTemp;
+       
       
 
         public ConfiguraPuertoSerialDialog()
@@ -23,10 +25,19 @@ namespace SimNav
            
         }
 
-        public ConfiguraPuertoSerialDialog(Form1 mainForm)
+        //public ConfiguraPuertoSerialDialog(Form1 mainForm)
+        //{
+        //    this.mainForm = mainForm;
+           
+        //    InitializeComponent();
+
+        //}
+
+        public ConfiguraPuertoSerialDialog(Form1 mainForm, PuertoSerial ObjetoPuertoSerial)
         {
             this.mainForm = mainForm;
-           
+            puertoSerialTemp = ObjetoPuertoSerial;
+
             InitializeComponent();
 
         }
@@ -54,7 +65,19 @@ namespace SimNav
                    // Agrega los nombres de los puertos disponibles al comboBox del dialogo
                    foreach (string port in ports)
                    {
-                       comboBox_ptoComunicaciones.Items.Add(port);
+                       if (!mainForm.estaOcupadoPuertosSerial(port))
+                       {
+                           
+                           comboBox_ptoComunicaciones.Items.Add(port);
+                           
+                       }
+                       //else
+                       //{
+                       //    comboBox_ptoComunicaciones.ForeColor = Color.Black;
+                       //    comboBox_ptoComunicaciones.Items.Add(port);
+                       //}
+                       
+                       
                        
                        
                    }
@@ -69,17 +92,51 @@ namespace SimNav
 
 		 }
 
+        //private void button_aceptarConfigPuertoSerial_Click(object sender, EventArgs e)
+        //{
+        //    string puerto;
+        //    puerto = comboBox_ptoComunicaciones.Text;
+        //    char[] caracteres = {' '} ;
+        //    string[] split = puerto.Split(caracteres );
+           
+
+        //    if (split.Length == 1)
+        //    {
+        //        mainForm.ObjetoPuertoSerial.setPuertoSerial(comboBox_ptoComunicaciones.Text,
+        //                                                comboBox_bitParada.Text,
+        //                                                comboBox_bitsDatos.Text,
+        //                                                comboBox_paridad.Text,
+        //                                                comboBox_velocidadPuerto.Text,
+        //                                                comboBox_tiempo.Text);
+        //        mainForm.listBox_visorDatosNmea.Items.Add("Puerto Serial Configurado");
+        //        mainForm.button_configurarPuerto.Enabled = false;
+        //        mainForm.activarBotonTransmitir();
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Debe seleccionar un puerto de comunicación", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //        mainForm.listBox_visorDatosNmea.Items.Add("El Puerto Serial no se ha Configurado");
+        //    }
+
+
+
+            
+            
+           
+        //}
+
         private void button_aceptarConfigPuertoSerial_Click(object sender, EventArgs e)
         {
             string puerto;
             puerto = comboBox_ptoComunicaciones.Text;
-            char[] caracteres = {' '} ;
-            string[] split = puerto.Split(caracteres );
-           
+            char[] caracteres = { ' ' };
+            string[] split = puerto.Split(caracteres);
+
 
             if (split.Length == 1)
             {
-                mainForm.ObjetoPuertoSerial.setPuertoSerial(comboBox_ptoComunicaciones.Text,
+                puertoSerialTemp.setPuertoSerial(comboBox_ptoComunicaciones.Text,
                                                         comboBox_bitParada.Text,
                                                         comboBox_bitsDatos.Text,
                                                         comboBox_paridad.Text,
@@ -98,9 +155,9 @@ namespace SimNav
 
 
 
-            
-            
-           
+
+
+
         }
 
         private void button_cancelarConfiguracionPuerto_Click(object sender, EventArgs e)

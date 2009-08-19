@@ -83,24 +83,33 @@
             this.button_configurarDatosBuque = new System.Windows.Forms.Button();
             this.tabPage_sensores = new System.Windows.Forms.TabPage();
             this.groupBox_panelSensores = new System.Windows.Forms.GroupBox();
-            this.label_gpsPropio = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_GPSBluetooth = new System.Windows.Forms.Button();
             this.checkBox_gpsPropio = new System.Windows.Forms.CheckBox();
-            this.checkBox_estadoDGPS = new System.Windows.Forms.CheckBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.checkBox_estadoGPS = new System.Windows.Forms.CheckBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_AIS = new System.Windows.Forms.Button();
             this.checkBox_estadoAIS = new System.Windows.Forms.CheckBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.checkBox_estadoAnemometro = new System.Windows.Forms.CheckBox();
-            this.checkBox_estadoGyro = new System.Windows.Forms.CheckBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.checkBox_estadoEcosonda = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_CORREDERA = new System.Windows.Forms.Button();
             this.checkBox_estadoCorredera = new System.Windows.Forms.CheckBox();
-            this.label46 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_ANEMOMETRO = new System.Windows.Forms.Button();
+            this.checkBox_estadoAnemometro = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_ECOSONDA = new System.Windows.Forms.Button();
+            this.checkBox_estadoEcosonda = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_GYRO = new System.Windows.Forms.Button();
+            this.checkBox_estadoGyro = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_DGPS = new System.Windows.Forms.Button();
+            this.checkBox_estadoDGPS = new System.Windows.Forms.CheckBox();
+            this.groupBox_GPS = new System.Windows.Forms.GroupBox();
+            this.button_configPuertoSerial_GPS = new System.Windows.Forms.Button();
+            this.checkBox_estadoGPS = new System.Windows.Forms.CheckBox();
             this.tabPage_reproducción = new System.Windows.Forms.TabPage();
             this.groupBox_reproduccion = new System.Windows.Forms.GroupBox();
+            this.checkBox_Loop = new System.Windows.Forms.CheckBox();
             this.button_seleccionArchivo = new System.Windows.Forms.Button();
             this.label_nombreArchivo = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -112,7 +121,7 @@
             this.groupBox_pantallaTramasNMEA = new System.Windows.Forms.GroupBox();
             this.openFileDialog_seleccionArchivo = new System.Windows.Forms.OpenFileDialog();
             this.checkBox_ocultarPanelTramasNMEA = new System.Windows.Forms.CheckBox();
-            this.checkBox_Loop = new System.Windows.Forms.CheckBox();
+            this.tabPage_estadoConexion = new System.Windows.Forms.TabPage();
             this.tabControl_controles.SuspendLayout();
             this.tabPage_configuracion.SuspendLayout();
             this.groupBox_estadoConexion.SuspendLayout();
@@ -123,6 +132,14 @@
             this.groupBox_datosNavegacion.SuspendLayout();
             this.tabPage_sensores.SuspendLayout();
             this.groupBox_panelSensores.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox_GPS.SuspendLayout();
             this.tabPage_reproducción.SuspendLayout();
             this.groupBox_reproduccion.SuspendLayout();
             this.groupBox_pantallaTramasNMEA.SuspendLayout();
@@ -132,6 +149,7 @@
             // 
             this.tabControl_controles.Controls.Add(this.tabPage_configuracion);
             this.tabControl_controles.Controls.Add(this.tabPage_sensores);
+            this.tabControl_controles.Controls.Add(this.tabPage_estadoConexion);
             this.tabControl_controles.Controls.Add(this.tabPage_reproducción);
             this.tabControl_controles.Location = new System.Drawing.Point(13, 9);
             this.tabControl_controles.Multiline = true;
@@ -764,22 +782,14 @@
             // 
             // groupBox_panelSensores
             // 
-            this.groupBox_panelSensores.Controls.Add(this.label_gpsPropio);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_gpsPropio);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoDGPS);
-            this.groupBox_panelSensores.Controls.Add(this.label49);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoGPS);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoAIS);
-            this.groupBox_panelSensores.Controls.Add(this.label32);
-            this.groupBox_panelSensores.Controls.Add(this.label48);
-            this.groupBox_panelSensores.Controls.Add(this.label44);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoAnemometro);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoGyro);
-            this.groupBox_panelSensores.Controls.Add(this.label47);
-            this.groupBox_panelSensores.Controls.Add(this.label45);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoEcosonda);
-            this.groupBox_panelSensores.Controls.Add(this.checkBox_estadoCorredera);
-            this.groupBox_panelSensores.Controls.Add(this.label46);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox7);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox6);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox5);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox4);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox3);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox2);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox1);
+            this.groupBox_panelSensores.Controls.Add(this.groupBox_GPS);
             this.groupBox_panelSensores.Location = new System.Drawing.Point(21, 23);
             this.groupBox_panelSensores.Name = "groupBox_panelSensores";
             this.groupBox_panelSensores.Size = new System.Drawing.Size(284, 733);
@@ -787,15 +797,28 @@
             this.groupBox_panelSensores.TabStop = false;
             this.groupBox_panelSensores.Text = "Sensores de Navegación";
             // 
-            // label_gpsPropio
+            // groupBox7
             // 
-            this.label_gpsPropio.AutoSize = true;
-            this.label_gpsPropio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_gpsPropio.Location = new System.Drawing.Point(74, 632);
-            this.label_gpsPropio.Name = "label_gpsPropio";
-            this.label_gpsPropio.Size = new System.Drawing.Size(129, 20);
-            this.label_gpsPropio.TabIndex = 15;
-            this.label_gpsPropio.Text = "GPS Bluetooth";
+            this.groupBox7.Controls.Add(this.button_configPuertoSerial_GPSBluetooth);
+            this.groupBox7.Controls.Add(this.checkBox_gpsPropio);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(25, 636);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(241, 81);
+            this.groupBox7.TabIndex = 23;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "GPS Bluetooth";
+            // 
+            // button_configPuertoSerial_GPSBluetooth
+            // 
+            this.button_configPuertoSerial_GPSBluetooth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_GPSBluetooth.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_GPSBluetooth.Name = "button_configPuertoSerial_GPSBluetooth";
+            this.button_configPuertoSerial_GPSBluetooth.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_GPSBluetooth.TabIndex = 1;
+            this.button_configPuertoSerial_GPSBluetooth.Text = "Puerto Serial";
+            this.button_configPuertoSerial_GPSBluetooth.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_GPSBluetooth.Click += new System.EventHandler(this.button_configPuertoSerial_GPSBluetooth_Click);
             // 
             // checkBox_gpsPropio
             // 
@@ -803,7 +826,7 @@
             this.checkBox_gpsPropio.BackColor = System.Drawing.Color.Red;
             this.checkBox_gpsPropio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_gpsPropio.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_gpsPropio.Location = new System.Drawing.Point(77, 655);
+            this.checkBox_gpsPropio.Location = new System.Drawing.Point(9, 32);
             this.checkBox_gpsPropio.Name = "checkBox_gpsPropio";
             this.checkBox_gpsPropio.Size = new System.Drawing.Size(126, 35);
             this.checkBox_gpsPropio.TabIndex = 14;
@@ -812,45 +835,28 @@
             this.checkBox_gpsPropio.UseVisualStyleBackColor = false;
             this.checkBox_gpsPropio.CheckedChanged += new System.EventHandler(this.checkBox_gpsPropio_CheckedChanged);
             // 
-            // checkBox_estadoDGPS
+            // groupBox6
             // 
-            this.checkBox_estadoDGPS.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_estadoDGPS.BackColor = System.Drawing.Color.Red;
-            this.checkBox_estadoDGPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_estadoDGPS.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoDGPS.Location = new System.Drawing.Point(77, 139);
-            this.checkBox_estadoDGPS.Name = "checkBox_estadoDGPS";
-            this.checkBox_estadoDGPS.Size = new System.Drawing.Size(126, 35);
-            this.checkBox_estadoDGPS.TabIndex = 2;
-            this.checkBox_estadoDGPS.Text = "Desactivado";
-            this.checkBox_estadoDGPS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox_estadoDGPS.UseVisualStyleBackColor = false;
-            this.checkBox_estadoDGPS.CheckedChanged += new System.EventHandler(this.checkBox_estadoDGPS_CheckedChanged);
+            this.groupBox6.Controls.Add(this.button_configPuertoSerial_AIS);
+            this.groupBox6.Controls.Add(this.checkBox_estadoAIS);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(25, 549);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(241, 81);
+            this.groupBox6.TabIndex = 22;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "AIS";
             // 
-            // label49
+            // button_configPuertoSerial_AIS
             // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(121, 543);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(39, 20);
-            this.label49.TabIndex = 13;
-            this.label49.Text = "AIS";
-            // 
-            // checkBox_estadoGPS
-            // 
-            this.checkBox_estadoGPS.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_estadoGPS.BackColor = System.Drawing.Color.Red;
-            this.checkBox_estadoGPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_estadoGPS.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoGPS.Location = new System.Drawing.Point(77, 52);
-            this.checkBox_estadoGPS.Name = "checkBox_estadoGPS";
-            this.checkBox_estadoGPS.Size = new System.Drawing.Size(126, 35);
-            this.checkBox_estadoGPS.TabIndex = 0;
-            this.checkBox_estadoGPS.Text = "Desactivado";
-            this.checkBox_estadoGPS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox_estadoGPS.UseVisualStyleBackColor = false;
-            this.checkBox_estadoGPS.CheckedChanged += new System.EventHandler(this.checkBox_estadoGPS_CheckedChanged);
+            this.button_configPuertoSerial_AIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_AIS.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_AIS.Name = "button_configPuertoSerial_AIS";
+            this.button_configPuertoSerial_AIS.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_AIS.TabIndex = 1;
+            this.button_configPuertoSerial_AIS.Text = "Puerto Serial";
+            this.button_configPuertoSerial_AIS.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_AIS.Click += new System.EventHandler(this.button_configPuertoSerial_AIS_Click);
             // 
             // checkBox_estadoAIS
             // 
@@ -858,7 +864,7 @@
             this.checkBox_estadoAIS.BackColor = System.Drawing.Color.Red;
             this.checkBox_estadoAIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_estadoAIS.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoAIS.Location = new System.Drawing.Point(77, 566);
+            this.checkBox_estadoAIS.Location = new System.Drawing.Point(9, 30);
             this.checkBox_estadoAIS.Name = "checkBox_estadoAIS";
             this.checkBox_estadoAIS.Size = new System.Drawing.Size(126, 35);
             this.checkBox_estadoAIS.TabIndex = 12;
@@ -867,100 +873,28 @@
             this.checkBox_estadoAIS.UseVisualStyleBackColor = false;
             this.checkBox_estadoAIS.CheckedChanged += new System.EventHandler(this.checkBox_estadoAIS_CheckedChanged);
             // 
-            // label32
+            // groupBox5
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(117, 29);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(46, 20);
-            this.label32.TabIndex = 1;
-            this.label32.Text = "GPS";
+            this.groupBox5.Controls.Add(this.button_configPuertoSerial_CORREDERA);
+            this.groupBox5.Controls.Add(this.checkBox_estadoCorredera);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(25, 460);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(241, 81);
+            this.groupBox5.TabIndex = 21;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "CORREDERA";
             // 
-            // label48
+            // button_configPuertoSerial_CORREDERA
             // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(73, 390);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(134, 20);
-            this.label48.TabIndex = 11;
-            this.label48.Text = "ANEMOMETRO";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(111, 116);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(59, 20);
-            this.label44.TabIndex = 3;
-            this.label44.Text = "DGPS";
-            // 
-            // checkBox_estadoAnemometro
-            // 
-            this.checkBox_estadoAnemometro.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_estadoAnemometro.BackColor = System.Drawing.Color.Red;
-            this.checkBox_estadoAnemometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_estadoAnemometro.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoAnemometro.Location = new System.Drawing.Point(77, 413);
-            this.checkBox_estadoAnemometro.Name = "checkBox_estadoAnemometro";
-            this.checkBox_estadoAnemometro.Size = new System.Drawing.Size(126, 35);
-            this.checkBox_estadoAnemometro.TabIndex = 10;
-            this.checkBox_estadoAnemometro.Text = "Desactivado";
-            this.checkBox_estadoAnemometro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox_estadoAnemometro.UseVisualStyleBackColor = false;
-            this.checkBox_estadoAnemometro.CheckedChanged += new System.EventHandler(this.checkBox_estadoAnemometro_CheckedChanged);
-            // 
-            // checkBox_estadoGyro
-            // 
-            this.checkBox_estadoGyro.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_estadoGyro.BackColor = System.Drawing.Color.Red;
-            this.checkBox_estadoGyro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_estadoGyro.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoGyro.Location = new System.Drawing.Point(77, 232);
-            this.checkBox_estadoGyro.Name = "checkBox_estadoGyro";
-            this.checkBox_estadoGyro.Size = new System.Drawing.Size(126, 35);
-            this.checkBox_estadoGyro.TabIndex = 4;
-            this.checkBox_estadoGyro.Text = "Desactivado";
-            this.checkBox_estadoGyro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox_estadoGyro.UseVisualStyleBackColor = false;
-            this.checkBox_estadoGyro.CheckedChanged += new System.EventHandler(this.checkBox_estadoGyro_CheckedChanged);
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(86, 312);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(108, 20);
-            this.label47.TabIndex = 9;
-            this.label47.Text = "ECOSONDA";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(110, 209);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(61, 20);
-            this.label45.TabIndex = 5;
-            this.label45.Text = "GYRO";
-            // 
-            // checkBox_estadoEcosonda
-            // 
-            this.checkBox_estadoEcosonda.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_estadoEcosonda.BackColor = System.Drawing.Color.Red;
-            this.checkBox_estadoEcosonda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_estadoEcosonda.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoEcosonda.Location = new System.Drawing.Point(77, 335);
-            this.checkBox_estadoEcosonda.Name = "checkBox_estadoEcosonda";
-            this.checkBox_estadoEcosonda.Size = new System.Drawing.Size(126, 35);
-            this.checkBox_estadoEcosonda.TabIndex = 8;
-            this.checkBox_estadoEcosonda.Text = "Desactivado";
-            this.checkBox_estadoEcosonda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox_estadoEcosonda.UseVisualStyleBackColor = false;
-            this.checkBox_estadoEcosonda.CheckedChanged += new System.EventHandler(this.checkBox_estadoEcosonda_CheckedChanged);
+            this.button_configPuertoSerial_CORREDERA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_CORREDERA.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_CORREDERA.Name = "button_configPuertoSerial_CORREDERA";
+            this.button_configPuertoSerial_CORREDERA.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_CORREDERA.TabIndex = 1;
+            this.button_configPuertoSerial_CORREDERA.Text = "Puerto Serial";
+            this.button_configPuertoSerial_CORREDERA.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_CORREDERA.Click += new System.EventHandler(this.button_configPuertoSerial_CORREDERA_Click);
             // 
             // checkBox_estadoCorredera
             // 
@@ -968,7 +902,7 @@
             this.checkBox_estadoCorredera.BackColor = System.Drawing.Color.Red;
             this.checkBox_estadoCorredera.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_estadoCorredera.ForeColor = System.Drawing.Color.Black;
-            this.checkBox_estadoCorredera.Location = new System.Drawing.Point(81, 495);
+            this.checkBox_estadoCorredera.Location = new System.Drawing.Point(9, 28);
             this.checkBox_estadoCorredera.Name = "checkBox_estadoCorredera";
             this.checkBox_estadoCorredera.Size = new System.Drawing.Size(126, 35);
             this.checkBox_estadoCorredera.TabIndex = 6;
@@ -977,15 +911,195 @@
             this.checkBox_estadoCorredera.UseVisualStyleBackColor = false;
             this.checkBox_estadoCorredera.CheckedChanged += new System.EventHandler(this.checkBox_estadoCorredera_CheckedChanged);
             // 
-            // label46
+            // groupBox4
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(83, 470);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(122, 20);
-            this.label46.TabIndex = 7;
-            this.label46.Text = "CORREDERA";
+            this.groupBox4.Controls.Add(this.button_configPuertoSerial_ANEMOMETRO);
+            this.groupBox4.Controls.Add(this.checkBox_estadoAnemometro);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(25, 373);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(241, 81);
+            this.groupBox4.TabIndex = 20;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "ANEMOMETRO";
+            // 
+            // button_configPuertoSerial_ANEMOMETRO
+            // 
+            this.button_configPuertoSerial_ANEMOMETRO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_ANEMOMETRO.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_ANEMOMETRO.Name = "button_configPuertoSerial_ANEMOMETRO";
+            this.button_configPuertoSerial_ANEMOMETRO.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_ANEMOMETRO.TabIndex = 1;
+            this.button_configPuertoSerial_ANEMOMETRO.Text = "Puerto Serial";
+            this.button_configPuertoSerial_ANEMOMETRO.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_ANEMOMETRO.Click += new System.EventHandler(this.button_configPuertoSerial_ANEMOMETRO_Click);
+            // 
+            // checkBox_estadoAnemometro
+            // 
+            this.checkBox_estadoAnemometro.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_estadoAnemometro.BackColor = System.Drawing.Color.Red;
+            this.checkBox_estadoAnemometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_estadoAnemometro.ForeColor = System.Drawing.Color.Black;
+            this.checkBox_estadoAnemometro.Location = new System.Drawing.Point(9, 30);
+            this.checkBox_estadoAnemometro.Name = "checkBox_estadoAnemometro";
+            this.checkBox_estadoAnemometro.Size = new System.Drawing.Size(126, 35);
+            this.checkBox_estadoAnemometro.TabIndex = 10;
+            this.checkBox_estadoAnemometro.Text = "Desactivado";
+            this.checkBox_estadoAnemometro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox_estadoAnemometro.UseVisualStyleBackColor = false;
+            this.checkBox_estadoAnemometro.CheckedChanged += new System.EventHandler(this.checkBox_estadoAnemometro_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button_configPuertoSerial_ECOSONDA);
+            this.groupBox3.Controls.Add(this.checkBox_estadoEcosonda);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(25, 286);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(241, 81);
+            this.groupBox3.TabIndex = 19;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "ECOSONDA";
+            // 
+            // button_configPuertoSerial_ECOSONDA
+            // 
+            this.button_configPuertoSerial_ECOSONDA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_ECOSONDA.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_ECOSONDA.Name = "button_configPuertoSerial_ECOSONDA";
+            this.button_configPuertoSerial_ECOSONDA.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_ECOSONDA.TabIndex = 1;
+            this.button_configPuertoSerial_ECOSONDA.Text = "Puerto Serial";
+            this.button_configPuertoSerial_ECOSONDA.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_ECOSONDA.Click += new System.EventHandler(this.button_configPuertoSerial_ECOSONDA_Click);
+            // 
+            // checkBox_estadoEcosonda
+            // 
+            this.checkBox_estadoEcosonda.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_estadoEcosonda.BackColor = System.Drawing.Color.Red;
+            this.checkBox_estadoEcosonda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_estadoEcosonda.ForeColor = System.Drawing.Color.Black;
+            this.checkBox_estadoEcosonda.Location = new System.Drawing.Point(9, 30);
+            this.checkBox_estadoEcosonda.Name = "checkBox_estadoEcosonda";
+            this.checkBox_estadoEcosonda.Size = new System.Drawing.Size(126, 35);
+            this.checkBox_estadoEcosonda.TabIndex = 8;
+            this.checkBox_estadoEcosonda.Text = "Desactivado";
+            this.checkBox_estadoEcosonda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox_estadoEcosonda.UseVisualStyleBackColor = false;
+            this.checkBox_estadoEcosonda.CheckedChanged += new System.EventHandler(this.checkBox_estadoEcosonda_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button_configPuertoSerial_GYRO);
+            this.groupBox2.Controls.Add(this.checkBox_estadoGyro);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(25, 189);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(241, 81);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "GYRO";
+            // 
+            // button_configPuertoSerial_GYRO
+            // 
+            this.button_configPuertoSerial_GYRO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_GYRO.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_GYRO.Name = "button_configPuertoSerial_GYRO";
+            this.button_configPuertoSerial_GYRO.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_GYRO.TabIndex = 1;
+            this.button_configPuertoSerial_GYRO.Text = "Puerto Serial";
+            this.button_configPuertoSerial_GYRO.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_GYRO.Click += new System.EventHandler(this.button_configPuertoSerial_GYRO_Click);
+            // 
+            // checkBox_estadoGyro
+            // 
+            this.checkBox_estadoGyro.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_estadoGyro.BackColor = System.Drawing.Color.Red;
+            this.checkBox_estadoGyro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_estadoGyro.ForeColor = System.Drawing.Color.Black;
+            this.checkBox_estadoGyro.Location = new System.Drawing.Point(9, 30);
+            this.checkBox_estadoGyro.Name = "checkBox_estadoGyro";
+            this.checkBox_estadoGyro.Size = new System.Drawing.Size(126, 35);
+            this.checkBox_estadoGyro.TabIndex = 4;
+            this.checkBox_estadoGyro.Text = "Desactivado";
+            this.checkBox_estadoGyro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox_estadoGyro.UseVisualStyleBackColor = false;
+            this.checkBox_estadoGyro.CheckedChanged += new System.EventHandler(this.checkBox_estadoGyro_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button_configPuertoSerial_DGPS);
+            this.groupBox1.Controls.Add(this.checkBox_estadoDGPS);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(25, 102);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(241, 81);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "DGPS";
+            // 
+            // button_configPuertoSerial_DGPS
+            // 
+            this.button_configPuertoSerial_DGPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_DGPS.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_DGPS.Name = "button_configPuertoSerial_DGPS";
+            this.button_configPuertoSerial_DGPS.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_DGPS.TabIndex = 1;
+            this.button_configPuertoSerial_DGPS.Text = "Puerto Serial";
+            this.button_configPuertoSerial_DGPS.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_DGPS.Click += new System.EventHandler(this.button_configPuertoSerial_DGPS_Click);
+            // 
+            // checkBox_estadoDGPS
+            // 
+            this.checkBox_estadoDGPS.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_estadoDGPS.BackColor = System.Drawing.Color.Red;
+            this.checkBox_estadoDGPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_estadoDGPS.ForeColor = System.Drawing.Color.Black;
+            this.checkBox_estadoDGPS.Location = new System.Drawing.Point(9, 28);
+            this.checkBox_estadoDGPS.Name = "checkBox_estadoDGPS";
+            this.checkBox_estadoDGPS.Size = new System.Drawing.Size(126, 35);
+            this.checkBox_estadoDGPS.TabIndex = 2;
+            this.checkBox_estadoDGPS.Text = "Desactivado";
+            this.checkBox_estadoDGPS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox_estadoDGPS.UseVisualStyleBackColor = false;
+            this.checkBox_estadoDGPS.CheckedChanged += new System.EventHandler(this.checkBox_estadoDGPS_CheckedChanged);
+            // 
+            // groupBox_GPS
+            // 
+            this.groupBox_GPS.Controls.Add(this.button_configPuertoSerial_GPS);
+            this.groupBox_GPS.Controls.Add(this.checkBox_estadoGPS);
+            this.groupBox_GPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_GPS.Location = new System.Drawing.Point(25, 15);
+            this.groupBox_GPS.Name = "groupBox_GPS";
+            this.groupBox_GPS.Size = new System.Drawing.Size(241, 81);
+            this.groupBox_GPS.TabIndex = 16;
+            this.groupBox_GPS.TabStop = false;
+            this.groupBox_GPS.Text = "GPS";
+            // 
+            // button_configPuertoSerial_GPS
+            // 
+            this.button_configPuertoSerial_GPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_configPuertoSerial_GPS.Location = new System.Drawing.Point(156, 30);
+            this.button_configPuertoSerial_GPS.Name = "button_configPuertoSerial_GPS";
+            this.button_configPuertoSerial_GPS.Size = new System.Drawing.Size(75, 35);
+            this.button_configPuertoSerial_GPS.TabIndex = 1;
+            this.button_configPuertoSerial_GPS.Text = "Puerto Serial";
+            this.button_configPuertoSerial_GPS.UseVisualStyleBackColor = true;
+            this.button_configPuertoSerial_GPS.Click += new System.EventHandler(this.button_configPuertoSerial_GPS_Click);
+            // 
+            // checkBox_estadoGPS
+            // 
+            this.checkBox_estadoGPS.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_estadoGPS.BackColor = System.Drawing.Color.Red;
+            this.checkBox_estadoGPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_estadoGPS.ForeColor = System.Drawing.Color.Black;
+            this.checkBox_estadoGPS.Location = new System.Drawing.Point(9, 30);
+            this.checkBox_estadoGPS.Name = "checkBox_estadoGPS";
+            this.checkBox_estadoGPS.Size = new System.Drawing.Size(126, 35);
+            this.checkBox_estadoGPS.TabIndex = 0;
+            this.checkBox_estadoGPS.Text = "Desactivado";
+            this.checkBox_estadoGPS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBox_estadoGPS.UseVisualStyleBackColor = false;
+            this.checkBox_estadoGPS.CheckedChanged += new System.EventHandler(this.checkBox_estadoGPS_CheckedChanged);
             // 
             // tabPage_reproducción
             // 
@@ -1010,6 +1124,21 @@
             this.groupBox_reproduccion.TabIndex = 3;
             this.groupBox_reproduccion.TabStop = false;
             this.groupBox_reproduccion.Text = "Reproducción Archivo Datos";
+            // 
+            // checkBox_Loop
+            // 
+            this.checkBox_Loop.AutoSize = true;
+            this.checkBox_Loop.Checked = true;
+            this.checkBox_Loop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Loop.Enabled = false;
+            this.checkBox_Loop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_Loop.Location = new System.Drawing.Point(48, 139);
+            this.checkBox_Loop.Name = "checkBox_Loop";
+            this.checkBox_Loop.Size = new System.Drawing.Size(193, 20);
+            this.checkBox_Loop.TabIndex = 31;
+            this.checkBox_Loop.Text = "Envio de Datos en Loop";
+            this.checkBox_Loop.UseVisualStyleBackColor = true;
+            this.checkBox_Loop.Visible = false;
             // 
             // button_seleccionArchivo
             // 
@@ -1067,7 +1196,7 @@
             // button_transmitir
             // 
             this.button_transmitir.Enabled = false;
-            this.button_transmitir.Location = new System.Drawing.Point(554, 787);
+            this.button_transmitir.Location = new System.Drawing.Point(565, 787);
             this.button_transmitir.Name = "button_transmitir";
             this.button_transmitir.Size = new System.Drawing.Size(128, 49);
             this.button_transmitir.TabIndex = 1;
@@ -1079,9 +1208,9 @@
             // 
             this.button_configurarPuerto.Location = new System.Drawing.Point(398, 786);
             this.button_configurarPuerto.Name = "button_configurarPuerto";
-            this.button_configurarPuerto.Size = new System.Drawing.Size(128, 49);
+            this.button_configurarPuerto.Size = new System.Drawing.Size(150, 49);
             this.button_configurarPuerto.TabIndex = 0;
-            this.button_configurarPuerto.Text = "Configuración Puerto Serial";
+            this.button_configurarPuerto.Text = "Configuración Puerto Serial Envio General";
             this.button_configurarPuerto.UseVisualStyleBackColor = true;
             this.button_configurarPuerto.Click += new System.EventHandler(this.button_configurarPuerto_Click);
             // 
@@ -1123,20 +1252,14 @@
             this.checkBox_ocultarPanelTramasNMEA.UseVisualStyleBackColor = true;
             this.checkBox_ocultarPanelTramasNMEA.CheckedChanged += new System.EventHandler(this.checkBox_ocultarPanelTramasNMEA_CheckedChanged);
             // 
-            // checkBox_Loop
+            // tabPage_estadoConexion
             // 
-            this.checkBox_Loop.AutoSize = true;
-            this.checkBox_Loop.Checked = true;
-            this.checkBox_Loop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Loop.Enabled = false;
-            this.checkBox_Loop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_Loop.Location = new System.Drawing.Point(48, 139);
-            this.checkBox_Loop.Name = "checkBox_Loop";
-            this.checkBox_Loop.Size = new System.Drawing.Size(193, 20);
-            this.checkBox_Loop.TabIndex = 31;
-            this.checkBox_Loop.Text = "Envio de Datos en Loop";
-            this.checkBox_Loop.UseVisualStyleBackColor = true;
-            this.checkBox_Loop.Visible = false;
+            this.tabPage_estadoConexion.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_estadoConexion.Name = "tabPage_estadoConexion";
+            this.tabPage_estadoConexion.Size = new System.Drawing.Size(343, 804);
+            this.tabPage_estadoConexion.TabIndex = 3;
+            this.tabPage_estadoConexion.Text = "Estado Conexión";
+            this.tabPage_estadoConexion.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1172,7 +1295,14 @@
             this.groupBox_datosNavegacion.PerformLayout();
             this.tabPage_sensores.ResumeLayout(false);
             this.groupBox_panelSensores.ResumeLayout(false);
-            this.groupBox_panelSensores.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox_GPS.ResumeLayout(false);
             this.tabPage_reproducción.ResumeLayout(false);
             this.groupBox_reproduccion.ResumeLayout(false);
             this.groupBox_reproduccion.PerformLayout();
@@ -1227,19 +1357,12 @@
         public System.Windows.Forms.GroupBox groupBox_pantallaTramasNMEA;
         private System.Windows.Forms.GroupBox groupBox_panelSensores;
         private System.Windows.Forms.CheckBox checkBox_estadoDGPS;
-        private System.Windows.Forms.Label label49;
         private System.Windows.Forms.CheckBox checkBox_estadoGPS;
         private System.Windows.Forms.CheckBox checkBox_estadoAIS;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.CheckBox checkBox_estadoAnemometro;
         private System.Windows.Forms.CheckBox checkBox_estadoGyro;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.CheckBox checkBox_estadoEcosonda;
         private System.Windows.Forms.CheckBox checkBox_estadoCorredera;
-        private System.Windows.Forms.Label label46;
         private System.Windows.Forms.CheckBox checkBox_navegacionBuque;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox_datosNavegacion;
@@ -1263,11 +1386,27 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         public System.Windows.Forms.NumericUpDown numericUpDown_velocidadBuque;
-        private System.Windows.Forms.Label label_gpsPropio;
         private System.Windows.Forms.CheckBox checkBox_gpsPropio;
         private System.Windows.Forms.CheckBox checkBox_verTrayectoria;
         private System.Windows.Forms.CheckBox checkBox_ocultarPanelTramasNMEA;
         private System.Windows.Forms.CheckBox checkBox_Loop;
+        private System.Windows.Forms.GroupBox groupBox_GPS;
+        private System.Windows.Forms.Button button_configPuertoSerial_GPS;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button_configPuertoSerial_DGPS;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button button_configPuertoSerial_AIS;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button button_configPuertoSerial_CORREDERA;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button_configPuertoSerial_ANEMOMETRO;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button_configPuertoSerial_ECOSONDA;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button_configPuertoSerial_GYRO;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button_configPuertoSerial_GPSBluetooth;
+        private System.Windows.Forms.TabPage tabPage_estadoConexion;
     }
 }
 

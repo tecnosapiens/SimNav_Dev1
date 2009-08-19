@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapControl));
-            this.axMap1 = new AxMapWinGIS.AxMap();
             this.toolStrip1_toolLayers = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -45,22 +44,11 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.legend1 = new LegendControl.Legend();
-            ((System.ComponentModel.ISupportInitialize)(this.axMap1)).BeginInit();
+            this.axMap1 = new AxMapWinGIS.AxMap();
             this.toolStrip1_toolLayers.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axMap1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // axMap1
-            // 
-            this.axMap1.Enabled = true;
-            this.axMap1.Location = new System.Drawing.Point(162, 28);
-            this.axMap1.Name = "axMap1";
-            this.axMap1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMap1.OcxState")));
-            this.axMap1.Size = new System.Drawing.Size(628, 469);
-            this.axMap1.TabIndex = 0;
-            this.axMap1.MouseDownEvent += new AxMapWinGIS._DMapEvents_MouseDownEventHandler(this.axMap1_MouseDownEvent);
-            this.axMap1.MouseUpEvent += new AxMapWinGIS._DMapEvents_MouseUpEventHandler(this.axMap1_MouseUpEvent);
-            this.axMap1.MouseMoveEvent += new AxMapWinGIS._DMapEvents_MouseMoveEventHandler(this.axMap1_MouseMoveEvent);
             // 
             // toolStrip1_toolLayers
             // 
@@ -215,15 +203,27 @@
             // legend1
             // 
             this.legend1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.legend1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.legend1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.legend1.Location = new System.Drawing.Point(0, 28);
             this.legend1.Map = null;
             this.legend1.Name = "legend1";
-            this.legend1.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.legend1.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.legend1.SelectedLayer = -1;
             this.legend1.Size = new System.Drawing.Size(156, 468);
             this.legend1.TabIndex = 6;
+            // 
+            // axMap1
+            // 
+            this.axMap1.Enabled = true;
+            this.axMap1.Location = new System.Drawing.Point(162, 28);
+            this.axMap1.Name = "axMap1";
+            this.axMap1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMap1.OcxState")));
+            this.axMap1.Size = new System.Drawing.Size(628, 469);
+            this.axMap1.TabIndex = 0;
+            this.axMap1.MouseDownEvent += new AxMapWinGIS._DMapEvents_MouseDownEventHandler(this.axMap1_MouseDownEvent);
+            this.axMap1.MouseUpEvent += new AxMapWinGIS._DMapEvents_MouseUpEventHandler(this.axMap1_MouseUpEvent);
+            this.axMap1.MouseMoveEvent += new AxMapWinGIS._DMapEvents_MouseMoveEventHandler(this.axMap1_MouseMoveEvent);
             // 
             // MapControl
             // 
@@ -238,11 +238,11 @@
             this.Name = "MapControl";
             this.Size = new System.Drawing.Size(807, 523);
             this.Load += new System.EventHandler(this.MapControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.axMap1)).EndInit();
             this.toolStrip1_toolLayers.ResumeLayout(false);
             this.toolStrip1_toolLayers.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axMap1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
